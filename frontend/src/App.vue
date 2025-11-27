@@ -33,8 +33,6 @@ const checkAccount = async () => {
 watch(() => route.path, () => {
   checkAccount();
 });
-
-
 </script>
 
 <template>

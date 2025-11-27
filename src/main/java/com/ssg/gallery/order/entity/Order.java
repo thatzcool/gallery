@@ -1,47 +1,47 @@
 package com.ssg.gallery.order.entity;
 
-import com.ssg.gallery.order.dto.OrderRead;
 import jakarta.persistence.*;
 import lombok.Getter;
 import org.hibernate.annotations.CreationTimestamp;
-
 import java.time.LocalDateTime;
 
-@Getter // ①
-@Entity // ②
-@Table(name = "orders") // ③
+import com.ssg.gallery.order.dto.OrderRead;
+
+@Getter
+@Entity
+@Table(name = "orders")
 public class Order {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id; // ④
+    private Integer id;
 
     @Column(nullable = false)
-    private Integer memberId; // ⑤
+    private Integer memberId;
 
     @Column(length = 50, nullable = false)
-    private String name; // ⑥
+    private String name;
 
     @Column(length = 500, nullable = false)
-    private String address; // ⑦
+    private String address;
 
     @Column(length = 10, nullable = false)
-    private String payment; // ⑧
+    private String payment;
 
-    @Column(length = 16)
-    private String cardNumber; // ⑨
+    @Column(length = 50)
+    private String cardNumber;
 
     @Column(nullable = false)
-    private Long amount; // ⑩
+    private Long amount;
 
     @Column(nullable = false, updatable = false)
     @CreationTimestamp
-    private LocalDateTime created; // ⑪
+    private LocalDateTime created;
 
-    public Order() { // ⑫
+    public Order() {
     }
 
-    public Order(Integer memberId, String name, String address, String payment, String cardNumber, Long amount) { // ⑫
+    public Order(Integer memberId, String name, String address, String payment, String cardNumber, Long amount) {
         this.memberId = memberId;
         this.name = name;
         this.address = address;
@@ -49,8 +49,9 @@ public class Order {
         this.cardNumber = cardNumber;
         this.amount = amount;
     }
+
     // 주문 조회 DTO로 변환
-    public OrderRead toRead() { // ②
+    public OrderRead toRead() {
         return OrderRead.builder()
                 .id(id)
                 .name(name)

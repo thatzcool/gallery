@@ -3,13 +3,13 @@ package com.ssg.gallery.cart.dto;
 import com.ssg.gallery.cart.entity.Cart;
 import lombok.Getter;
 
-@Getter // ①
+@Getter
 public class CartRequest {
 
-    private Integer itemId; // ②
+    private Integer itemId;
 
     // 엔티티 객체로 변환
-    public Cart toEntity(Integer memberId) { // ③
+    public Cart toEntity(Integer memberId) {
         return new Cart(memberId, itemId);
     }
 }

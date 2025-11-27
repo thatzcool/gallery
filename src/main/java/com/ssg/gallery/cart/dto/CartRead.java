@@ -3,10 +3,10 @@ package com.ssg.gallery.cart.dto;
 import lombok.Builder;
 import lombok.Getter;
 
-@Getter // ①
-@Builder  // ②
+@Getter
+@Builder
 public class CartRead {
 
-    private Integer id; // ③
-    private Integer itemId; // ④
+    private Integer id;
+    private Integer itemId;
 }

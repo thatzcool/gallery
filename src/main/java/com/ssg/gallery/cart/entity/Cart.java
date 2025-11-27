@@ -1,10 +1,11 @@
 package com.ssg.gallery.cart.entity;
 
-import com.ssg.gallery.cart.dto.CartRead;
 import jakarta.persistence.*;
 import lombok.Getter;
 import org.hibernate.annotations.CreationTimestamp;
 import java.time.LocalDateTime;
+
+import com.ssg.gallery.cart.dto.CartRead;
 
 @Getter
 @Entity
@@ -34,7 +35,7 @@ public class Cart {
     }
 
     // 장바구니 조회 DTO로 변환
-    public CartRead toRead() { // ②
+    public CartRead toRead() {
         return CartRead.builder()
                 .id(id)
                 .itemId(itemId)

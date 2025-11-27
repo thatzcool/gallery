@@ -1,14 +1,14 @@
 <script setup>
-import {getItems, removeItem} from "@/services/cartService.js"
+import {getItems, removeItem} from "@/services/cartService"
 import {reactive} from "vue";
 
 // 반응형 상태
-const state = reactive({ // ①
+const state = reactive({
   items: []
 });
 
 // 장바구니 상품 조회
-const load = async () => { // ②
+const load = async ()=>{
   const res = await getItems();
 
   if (res.status === 200) {
@@ -17,7 +17,7 @@ const load = async () => { // ②
 }
 
 // 장바구니 상품 삭제
-const remove = async (itemId) => { // ③
+const remove = async (itemId) => {
   const res = await removeItem(itemId);
 
   if (res.status === 200) {
@@ -27,16 +27,16 @@ const remove = async (itemId) => { // ③
 }
 
 // 커스텀 생성 훅
-(async function onCreated() { // ④
+(async function onCreated() {
   await load();
 })();
 </script>
 
 <template>
   <div class="cart">
-    <div class="container"> <!-- ⑤ -->
+    <div class="container">
       <template v-if="state.items.length">
-        <ul class="items"> <!-- ⑥ -->
+        <ul class="items">
           <li v-for="i in state.items">
             <img :alt="`상품 사진(${i.name})`" :src="i.imgPath"/>
             <b class="name">{{ i.name }}</b>
@@ -62,13 +62,13 @@ const remove = async (itemId) => { // ③
     margin: 0;
     padding: 0;
 
-    li { // ⑦
+    li {
       border: 1px solid #eee;
       margin-top: 25px;
       margin-bottom: 25px;
     }
 
-    img { // ⑧
+    img {
       width: 150px;
       height: 150px;
     }
@@ -88,7 +88,7 @@ const remove = async (itemId) => { // ③
     }
   }
 
-  .act .btn { // ⑨
+  .act .btn {
     width: 300px;
     display: block;
     margin: 0 auto;
